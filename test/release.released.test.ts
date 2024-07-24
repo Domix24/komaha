@@ -82,9 +82,9 @@ describe("on release.released", () => {
 			.post("/repos/myownerlogin/thelinkedrepo/pulls", (body) => {
 				const getBodyTyped = zod
 					.object({
-						base: zod.literal("main"),
-						head: zod.literal("myreleasetagname"),
-						head_repo: zod.literal("myrepositoryname"),
+						base: zod.literal("master"),
+						head: zod.literal("domix24:myreleasetagname"),
+						//head_repo: zod.literal("myrepositoryname"),
 					})
 					.strict()
 					.safeParse(body)

@@ -55,9 +55,9 @@ export const defaultReturn: ApplicationFunction = (app: Probot) => {
 		if (!config.linkedRepo) return
 
 		await context.octokit.pulls.create({
-			base: "main",
-			head: context.payload.release.tag_name,
-			head_repo: context.payload.repository.name,
+			base: "master",
+			head: `domix24:${context.payload.release.tag_name}`,
+			//head_repo: context.payload.repository.name,
 			owner: context.payload.repository.owner.login,
 			repo: config.linkedRepo,
 		})
