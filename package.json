@@ -1,0 +1,47 @@
+{
+	"name": "komaha",
+	"version": "0.0.0",
+	"private": true,
+	"description": "do things",
+	"author": "domix24",
+	"license": "ISC",
+	"homepage": "https://github.com/domix24/komaha",
+	"keywords": [
+		"probot",
+		"github",
+		"probot-app",
+		"komaha"
+	],
+	"scripts": {
+		"build": "tsc",
+		"prestart": "npm run build && npm test",
+		"start": "probot run ./lib/index.js",
+		"test": "vitest --run",
+		"prepare": "husky",
+		"lint": "eslint api src test",
+		"lint:fix": "npm run lint -- --fix",
+		"prettier": "prettier . --check --use-tabs --no-semi",
+		"prettier:fix": "npm run prettier -- --write",
+		"format": "npm run prettier:fix && npm run lint:fix"
+	},
+	"dependencies": {
+		"probot": "^13.0.1",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@commitlint/config-conventional": "^19.2.2",
+		"@eslint/js": "^9.7.0",
+		"commitlint": "^19.3.0",
+		"eslint": "^8.57.0",
+		"husky": "^9.1.1",
+		"nock": "^14.0.0-beta.5",
+		"prettier": "^3.3.3",
+		"typescript": "^5.5.3",
+		"typescript-eslint": "^7.16.1",
+		"vitest": "^1.3.1"
+	},
+	"engines": {
+		"node": ">= 18"
+	},
+	"type": "module"
+}

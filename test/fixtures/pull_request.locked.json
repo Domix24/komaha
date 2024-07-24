@@ -1,0 +1,21 @@
+{
+	"action": "locked",
+	"pull_request": {
+		"number": 1,
+		"user": {
+			"login": "myuser"
+		},
+		"head": {
+			"sha": "theheadsha",
+			"user": {
+				"login": "myotheruser"
+			}
+		}
+	},
+	"repository": {
+		"name": "myrepo",
+		"owner": {
+			"login": "myowner"
+		}
+	}
+}
