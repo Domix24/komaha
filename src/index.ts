@@ -44,11 +44,24 @@ export const defaultReturn: ApplicationFunction = (app: Probot) => {
 
 		await context.octokit.checks.create(context.repo(checkOptions))
 	})
-	// For more information on building apps:
-	// https://probot.github.io/docs/
 
-	// To get your app running against GitHub, see:
-	// https://probot.github.io/docs/development/
+	app.on(["release.released"], async (context) => {
+		const config = zod
+			.object({ linkedRepo: zod.string() })
+			.strict()
+			.parse(await context.config("komaha.yml", { linkedRepo: "" }))
+		app.log.info(config)
+
+		if (!config.linkedRepo) return
+
+		await context.octokit.pulls.create({
+			base: "main",
+			head: context.payload.release.tag_name,
+			head_repo: context.payload.repository.name,
+			owner: context.payload.repository.owner.login,
+			repo: config.linkedRepo,
+		})
+	})
 }
 
 export default defaultReturn
